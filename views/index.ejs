@@ -1,118 +1,12 @@
-    <style>
-
-        body{
-            margin: 0;
-            padding: 0;
-            background: url(./back) no-repeat;
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            font-family: 'montserrat', sans-serif;
-        }
-
-        .sub{
-            background-color: #fb2525;
-            padding: 7px 20px 7px 20px;
-            border-radius: 30px;
-            border: none;
-            outline: none;
-            font-family: 'Impact', sans-serif;
-            font-size: 26px;
-            text-decoration: none;
-            color: white;
-        }
-
-        .sub:hover{
-            background: darkred;
-            color: palegoldenrod;
-            cursor: pointer;
-        }
-
-        #bh1:disabled,#bh2:disabled{
-            background: #434343;
-            color: palegoldenrod;
-            cursor: pointer;
-        }
-
-        .b-1{
-            float: left;
-            margin-left: 30px;
-        }
-
-        .b-2{
-            float: right;
-            margin-right: 30px;
-        }
-
-        #form{
-            top: 50%;   
-            left: 65%;
-            position: absolute;
-            transform: translate(-50%,-50%);
-            box-sizing: border-box;
-            border-color: black;
-            border-radius: 20px;
-            padding: 25px;
-            width: 520px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        #form legend{
-            margin-bottom: 40px;
-            font-size: 40px;
-        }
-
-        input[type="text"], input[type="password"]{
-            border: none;
-            outline: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.293);
-            width: 100%;
-            height: 40px;
-            background: transparent;
-            color: white;
-            font-size: 16px;
-        }
-
-        #form input[type="text"]::placeholder, input[type="password"]::placeholder{
-            color: #ffc107;
-        }
-
-        .link{
-            line-height: 10px;
-            font-size: 14px;
-            color: darkgrey;
-            text-decoration: none;
-            display: block;
-            margin: 30px 0 100px 30px; 
-        }
-
-        .link:hover{
-            color: #ffc107;
-        }
-
-        #one,#two,#three,#four,#five{
-
-            font-size: small;
-            color: #d82d2d;
-        }
-
-
-    </style>
-
-
-
-<div onload="hide()">
-
+<link rel="stylesheet" href="/css/log-sign.css"/>
+<div>
     <div>
         <fieldset id="form">
             <legend id="legend">Login Here</legend>
-            <span><?php echo $incorrect; ?></span>
+            <div class="error"><span align="center"><%- locals.error %></span></div>
 
             <div id="box">
-                <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                <form method="POST">
 
                     <div id="hide" class="input">
                         <label for="name">Username:</label>
@@ -154,15 +48,15 @@
 
                     </div>
 
-                    <button type="submit" name="log-in" value="Send" id="bh1" class="sub" style="width:100%; text-align:center">Submit</button>
-                    <button type="submit" name="sign-up" value="Send" id="bh2" class="sub" style="width:100%; text-align:center">Sign Up</button>
+                    <button type="submit" name="submit" value="log-in" id="bh1" class="sub" style="width:100%; text-align:center">Submit</button>
+                    <button type="submit" name="submit" value="sign-up" id="bh2" class="sub" style="width:100%; text-align:center" >Sign Up</button>
 
                     <div style="overflow: hidden; margin: 20px 0 20px 0;">
                         <button type="button" class="b-1 sub" onclick="login()">Login</button>
                         <button type="button" class="b-2 sub" onclick="signup()">Sign Up</button>
                     </div>
                     
-                    <a class="link" href="#" id="hide3">Forgotten Password</a>
+                    <a class="link" href="/registerlogin" id="hide3">Forgotten Password</a>
 
                 </form>
             </div>
@@ -171,165 +65,10 @@
 
         </fieldset>
     </div>
-
-
     <!--Login Table Info End-->
 </div>
 
-<script type="text/javascript">
+<script type="text/javascript" src="/javascripts/log-sign.js"></script>
 
-    const button1= document.getElementById("bh1");
-    button1.disabled=true;
-
-    const button2= document.getElementById("bh2");
-    button2.disabled=true;
-
-    function hide(){
-
-        document.getElementById("hide0").style.display="none";
-        document.getElementById("hide1").style.display="none";
-        document.getElementById("hide2").style.display="none";
-        document.getElementById("bh2").style.display="none";
-
-        document.getElementById("hide").style.marginBottom="100px";
-        document.getElementById("hide4").style.marginBottom="100px";
-
-        
-    }
-
-    function signup(){
-        document.getElementById('legend').innerHTML = "Sign Up";
-
-        document.getElementById("hide0").style.display="block";
-        document.getElementById("hide1").style.display="block";
-        document.getElementById("hide2").style.display="block";
-        document.getElementById("bh2").style.display="block";
-
-        document.getElementById("hide0").disabled=false;
-        document.getElementById("hide1").disabled=false;
-        document.getElementById("hide2").disabled=false;
-
-        document.getElementById("hide3").style.display="none";
-        document.getElementById("bh1").style.display="none";
-
-        document.getElementById("hide").style.marginBottom="40px";
-        document.getElementById("hide0").style.marginBottom="40px";
-        document.getElementById("hide1").style.marginBottom="40px";
-        document.getElementById("hide2").style.marginBottom="40px";
-        document.getElementById("hide3").style.marginBottom="40px";
-        document.getElementById("hide4").style.marginBottom="40px";
-
-    }
-
-    function login(){
-        document.getElementById('legend').innerHTML = "Login Here";
-        document.getElementById("hide0").style.display="none";
-        document.getElementById("hide1").style.display="none";
-        document.getElementById("hide2").style.display="none";
-
-        document.getElementById("hide0").disabled=true;
-        document.getElementById("hide1").disabled=true;
-        document.getElementById("hide2").disabled=true;
-
-        document.getElementById("bh2").style.display="none";
-
-        document.getElementById("hide3").style.display="block";
-        document.getElementById("bh1").style.display="block";
-
-        document.getElementById("hide").style.marginBottom="100px";
-        document.getElementById("hide4").style.marginBottom="100px";
-    }
-
-    let name = document.getElementById('name');
-    let email = document.getElementById('email');
-    let password = document.getElementById('pass');
-    let repass = document.getElementById('repass');
-    let pnum = document.getElementById('pnum');
-
-    function namevalidate(){
-
-        // name check
-        if(name.value===''){
-            document.getElementById('one').innerHTML = 'Please enter a name';
-            return false;
-        }
-        else if (/^[A-Za-z_0-9]+$/.test(String(name.value))){
-            document.getElementById('one').innerHTML = '';
-            return true;
-        }else{
-            document.getElementById('one').innerHTML = 'Invalid name';
-            return false;
-        }
-    }
-
-    function pnumvalidate(){
-        if(pnum.value===''){
-            document.getElementById('three').innerHTML = 'Please enter a phone number';
-            return false;
-        }
-        else if (pnum.value.length != 10)
-        {
-            document.getElementById('three').innerHTML = 'Invalid phone number';
-            return false;
-        }else{
-            document.getElementById('three').innerHTML = '';
-            return true;
-        } 
-    }
-
-    function emailvalidate(){
-        if(email.value===''){
-            document.getElementById('two').innerHTML = 'Please enter a email address';
-            return false;
-        }
-        else if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(String(email.value))){
-            document.getElementById('two').innerHTML = '';
-            return true;
-        }else{
-            document.getElementById('two').innerHTML = 'Invalid email';
-            return false;
-        }  
-    }
-
-    function passwordvalidate(){
-        if(password.value!==repass.value){
-            document.getElementById('five').innerHTML = 'Passwords dont match';
-            return false;
-        }
-        else{
-            document.getElementById('five').innerHTML = '';
-            return true;
-        }
-
-    }
-
-    setInterval(function() {
-        emailvalidate();
-        pnumvalidate();
-        namevalidate();
-        passwordvalidate();
-
-        let x=document.getElementById('legend').innerHTML;
-
-
-        if(x =="Login Here"){
-            if(namevalidate()&& password.value!=''){
-                button1.disabled=false;
-            }else{
-                button1.disabled=true;
-            }
-        }
-
-        if(x== "Sign Up"){
-            if (emailvalidate() && pnumvalidate() && passwordvalidate() && namevalidate()){
-                button2.disabled=false;
-            }else{
-                button2.disabled=true;
-            }
-        }
-
-    }, 500);
-
-</script>
 
 </html>

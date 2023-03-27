@@ -1,0 +1,110 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(/images/back.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: 'montserrat', sans-serif;
+}
+
+.error{
+    display: flex;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+span{
+    color: #d82d2d;
+    font-family: 'montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.sub{
+    background-color: #fb2525;
+    padding: 7px 20px 7px 20px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-family: 'Impact', sans-serif;
+    font-size: 26px;
+    text-decoration: none;
+    color: white;
+}
+
+.sub:hover{
+    background: darkred;
+    color: palegoldenrod;
+    cursor: pointer;
+}
+
+#bh1:disabled,#bh2:disabled{
+    background: #434343;
+    color: palegoldenrod;
+    cursor: pointer;
+}
+
+.b-1{
+    float: left;
+    margin-left: 30px;
+}
+
+.b-2{
+    float: right;
+    margin-right: 30px;
+}
+
+#form{
+    top: 50%;   
+    left: 65%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    border-color: black;
+    border-radius: 20px;
+    padding: 25px;
+    width: 520px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#form legend{
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+input[type="text"], input[type="password"]{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.293);
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+}
+
+#form input[type="text"]::placeholder, input[type="password"]::placeholder{
+    color: #ffc107;
+}
+
+.link{
+    line-height: 10px;
+    font-size: 14px;
+    color: darkgrey;
+    text-decoration: none;
+    display: block;
+    margin: 30px 0 100px 30px; 
+}
+
+.link:hover{
+    color: #ffc107;
+}
+
+#one,#two,#three,#four,#five{
+
+    font-size: small;
+    color: #d82d2d;
+}

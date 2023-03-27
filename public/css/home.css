@@ -1,0 +1,258 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+@font-face {
+    font-family: edu;
+    src: url(/fonts/EduNSWACTFoundation-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: edu2;
+    src: url(/fonts/Caveat-VariableFont_wght.ttf);
+}
+
+span{
+    margin-left: 15px;
+    color:white;
+    font-family: edu;
+    font-size: 16px;
+}
+
+body{
+    background-image: url(/images/back.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: none;
+}
+
+/*Header Styling*/
+
+header{
+    background-color: rgba(0, 0, 0, 0.534);
+}
+
+#top{
+    color:rgb(255, 255, 255);
+    text-align:center;
+    font-size:66px;
+    font-family: 'montserrat', monospace;
+    padding: 20px;
+}
+#top1{
+    
+    text-align:center;
+    color:rgb(255, 255, 255);
+    font-size:21px;
+    font-family: edu2;
+    padding-bottom: 10px;
+}
+/* Navigation bar styling*/
+
+
+/*Navbar Functionality*/
+#navbar{
+    display: flex;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0.218),rgba(255, 255, 255, 0.233));
+    font-family: edu;
+    height: auto;
+
+}
+
+
+/*Navbar content functionality*/
+#navcontent{
+    display: flex;
+    margin-left: 20px;
+}
+
+
+
+/*Navbar content styling*/
+ul{
+    list-style-type: none;
+    padding: 10px;
+}
+
+ul li a{
+    color:white;
+    text-decoration: none;
+    font-size: 40px;
+    border-radius:10px;
+}
+ul li a:hover{
+    background-color: rgba(255, 255, 255, 0.227);
+    border-radius: 10px;
+}
+
+/* website background image designing */
+#container1{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60vw;
+}
+
+
+
+#row1{
+    color:rgb(255, 255, 255);
+    text-align:center;
+    font-size:36px;
+    font-family: 'montserrat', monospace;
+    padding: 20px;
+}
+/*Button Styling*/
+.btn{
+    margin:15px 10px 12px 0;
+    padding: 15px 20px 15px 20px;
+    border: none;
+    border-radius:15px;
+    background-color:rgba(121, 152, 247, 0.266);
+    font-size:20px;
+    font-weight: bold;
+    font-family: 'Ubuntu Mono', monospace;
+    color:white;
+    float: right;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color: rgba(50, 91, 229, 0.485);
+}
+
+#b{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.636);
+}
+
+#container3{
+    display: flex;
+    justify-content: space-evenly;
+}
+#row2{
+    overflow: hidden;
+    width:24vw;
+    height: 13vw;
+    box-shadow: 2px 7px 16px 19px rgba(0, 0, 0, 0.689);
+    margin-top:51px;
+    margin-bottom: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    margin-right: 38px;
+    border-radius: 40px;
+    background: url(/images/2.jpeg) no-repeat center center/cover;
+}
+
+#row3{
+    overflow: hidden;
+    width:24vw;
+    height: 13vw;
+    box-shadow: 2px 7px 16px 19px;
+    margin-top:51px;
+    margin-bottom: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    margin-right: 38px;
+    border-radius: 40px;
+    background: url(/images/3.jpeg) no-repeat center center/cover;
+}
+
+#top3{
+    margin-top: 30px;
+    
+    color:rgb(255, 255, 255);
+    text-align:center;
+    font-size:36px;
+    font-family: 'montserrat', monospace;
+    padding: 20px;
+}
+#container4{
+    display: flex;
+    margin: 41px;
+    
+}  
+#row4{
+    overflow: hidden;
+    width:24vw;
+    height: 13vw;
+    box-shadow: 2px 7px 16px 19px;
+    margin-top:51px;
+    margin-bottom: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    margin-right: 38px;
+    border-radius: 40px;
+}
+
+.d1{
+    background:url(/images/a1.jpg) no-repeat center center/cover;
+}
+.d2{
+    background:url(/images/a2.jpg) no-repeat center center/cover;
+}
+.d3{
+    
+    background:url(/images/a3.jpg) no-repeat center center/cover;
+    
+}
+/*Designing the footer*/
+footer{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.544);
+    height: 100px;
+    color:white;
+}
+/*Designing of Contact Us*/
+#ContactUs{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gray;
+}
+.form-shape input, .form-shape select, .form-shape textarea{
+   width: 92%;
+   padding: 0.5rem;
+}
+/*Changing the color of placeholder*/
+::placeholder{                  
+    color:gray;
+}
+/*Making the webpage responsive using media queries*/
+@media only screen and (max-width:1131px){
+    #row4{
+        width: 42vw;
+    }
+}
+@media only screen and (min-width:600px) and (max-width:781px)
+{
+    #row4{
+        width:84vw;
+        margin: auto;
+        margin-left: 22px;
+    }
+}
+@media only screen and (max-width:600px){
+    #row4{
+        width:78vw;
+        margin: auto;
+        margin-left: 3px;
+    }
+}
+@media only screen and (min-height:1000px){
+
+    #container1::before{
+        height:39vh;
+    }
+    #container1{
+        height:44vh
+    }
+}
