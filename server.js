@@ -11,6 +11,7 @@ const path=require('path')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyparser = require('body-parser')
+const methodOverride = require('method-override')
 
 
 //router initalization  
@@ -23,6 +24,7 @@ const homerouter = require('./routes/home')
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
+app.use(methodOverride('_method'))
 app.use(expressLayouts)
 app.use(express.static(path.join(__dirname,'public')))
 app.use(bodyparser.urlencoded({limit:'10mb',extended:false}))

@@ -1,0 +1,72 @@
+<%- include('../partials/adminheader') %>
+<link rel="stylesheet" href="/css/edit-menu.css"/>
+
+            <div id="item">
+                <div class="image-holder">
+                    <img src="<%= item.one %>" height="270" width="480">
+                </div>
+
+                <div class="item-name">
+                    <span><%= item.itemname %></span>
+                    <% if(item.foodtype=='veg'){ %>
+                        <img src="/images/veg-symbol.jpg" alt="veg" height="32" width="32"/>
+                    <% }else{ %>
+                        <img src="/images/nonveg.jpg" alt="veg" height="32" width="32"/>
+                    <% } %>
+                </div>
+
+                <div class="desc">
+                    <span class="sdesc">Description:</span><br>
+                    <p class="desc-text"><%= item.description %></p>
+                </div>
+            </div>
+            
+            <div class="form">
+                <label for="update">Update</label><br>
+                <form name="update" action="/admin/admin-menu-del-update/<%= item.id %>?_method=PUT" method="POST" >
+                    
+                    <div class="inner-1">
+                        <label for="itemname">Item name</label>
+                        <input type="text" name="itemname" placeholder="enter your item name..." >
+                    </div>
+        
+                    <div class="inner-1">
+                        <label for="foodtype">Food type</label>
+                        <select name="foodtype">
+                            <option>veg</option>
+                            <option>nonveg</option>
+                        </select>
+                    </div>
+                    
+                    <div class="inner-1">
+                        <label for="shortdesp">Short description</label>
+                        <textarea name="shortdesp" placeholder="Enter short description" cols="30" rows="10"></textarea>
+                    </div>
+                    
+                    <div class="inner-1">
+                        <label for="description">Description</label>
+                        <textarea name="description" placeholder="Enter full description" cols="50" rows="10"></textarea>
+                    </div>
+                    
+                    <div class="inner-1">
+                        <label for="price">Item Price</label>
+                        <input type="text" name="price" placeholder="enter your item price..." >
+                    </div>
+                    
+                    <div class="inner-1 filesize">
+                        <input type="file" name="itemimage" class="filepond">
+                    </div>
+                    <button type="submit" name="submit" value="update" class="sub">Update</button>
+
+                </form> 
+            </div>
+
+            <div class="form">
+                <label for="delete">Delete</label>
+                <form name="delete" action="/admin/admin-menu-del-update/<%= item.id %>?_method=DELETE" method="POST" >
+                    <button type="submit" name="submit" value="delete" class="sub">Delete</button>
+
+                </form> 
+            </div>
+
+<%- include('../partials/footer') %>

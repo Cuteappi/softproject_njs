@@ -1,14 +1,14 @@
 <%- include('../partials/adminheader') %>
 <link rel="stylesheet" href="/css/addmenu.css"/>
-    <div>
+    <div class="form">
         <form method="POST">
             
-            <div>
+            <div class="inner-1">
                 <label for="itemname">Item name</label>
                 <input type="text" name="itemname" placeholder="enter your item name..." required>
             </div>
 
-            <div>
+            <div class="inner-1">
                 <label for="foodtype">Food type</label>
                 <select name="foodtype">
                     <option>veg</option>
@@ -16,25 +16,27 @@
                 </select>
             </div>
             
-            <div>
+            <div class="inner-1">
+                <label for="shortdesp">Short description</label>
                 <textarea name="shortdesp" placeholder="Enter short description" cols="30" rows="10"></textarea>
             </div>
             
-            <div>
+            <div class="inner-1">
+                <label for="description">Description</label>
                 <textarea name="description" placeholder="Enter full description" cols="50" rows="10"></textarea>
             </div>
             
-            <div>
+            <div class="inner-1">
                 <label for="price">Item Price</label>
                 <input type="text" name="price" placeholder="enter your item price..." required>
             </div>
             
-            <div>
+            <div class="inner-1 filesize">
                 <input type="file" name="itemimage" class="filepond">
             </div>
 
             <div>
-                <button type="submit" name="submit">Submit</button>
+                <button type="submit" name="submit" class="sub">Submit</button>
             </div>
             
 

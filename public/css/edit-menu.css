@@ -75,6 +75,29 @@ ul li:hover{
     border:transparent;
 }
 
+.form{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px;
+    font-family: edu;
+    font-size: 40px;
+    width:50%;
+    color:white;
+    background:linear-gradient(rgba(0, 0, 0, 0.585),rgba(0, 0, 0, 0.245));
+    border-radius:10px;
+    text-align: center;
+}
+label{
+    font-family: edu2;
+    font-size: 60px;
+}
+
+.form .inner-1{
+    margin-top: 40px;
+}
+
 /*Navbar content functionality*/
 #navcontent{
     display: flex;
@@ -82,6 +105,7 @@ ul li:hover{
 }
 
 .sub{
+    margin-top: 40px;
     background-color: #fb2525;
     padding: 7px 20px 7px 20px;
     border-radius: 30px;
@@ -91,9 +115,11 @@ ul li:hover{
     font-size: 26px;
     text-decoration: none;
     color: white;
+    transition: 0.5s ease-in-out;
 }
 
 .sub:hover{
+    border-radius: 10px;
     background: darkred;
     color: palegoldenrod;
     cursor: pointer;
@@ -155,4 +181,16 @@ footer{
 btn-box{
     display: flex;
 
-}  
+}
+
+input[type="text"],select,textarea{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.293);
+    margin-left:20px;
+    width: 50%;
+    height: 40px;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+}

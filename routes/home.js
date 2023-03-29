@@ -16,8 +16,7 @@ router.get('/homemenu',async (req,res) =>{
         title: 'Menu page',
         item: query,
         name: global.name
-        
-    })
+        })
 
     }catch(err){
         res.render('admin/addmenu.ejs')

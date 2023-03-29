@@ -29,7 +29,6 @@ const menuItemSchema = new Schema({
     price: {
         type: Number,
         required: true,
-        unique: true
     },
 
     image: {
