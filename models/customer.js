@@ -26,6 +26,12 @@ const customerSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    admin:{
+        type: String,
+        required: true,
+        default: 'no',
+        enum:['yes','no']
     }
 },{timestamps: true})
 

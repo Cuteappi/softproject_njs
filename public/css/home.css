@@ -56,7 +56,8 @@ header{
     background: linear-gradient(90deg,rgba(0, 0, 0, 0.218),rgba(255, 255, 255, 0.233));
     font-family: edu;
     height: auto;
-
+    justify-content: center;
+    margin-bottom: 40px;
 }
 
 
@@ -66,12 +67,14 @@ header{
     margin-left: 20px;
 }
 
-
-
 /*Navbar content styling*/
 ul{
-    list-style-type: none;
-    padding: 10px;
+    list-style-type: none;   
+}
+
+li{
+    padding:10px 40px 10px 40px;
+    
 }
 
 ul li a{
@@ -80,9 +83,10 @@ ul li a{
     font-size: 40px;
     border-radius:10px;
 }
-ul li a:hover{
+ul li:hover{
     background-color: rgba(255, 255, 255, 0.227);
     border-radius: 10px;
+    border:transparent;
 }
 
 /* website background image designing */

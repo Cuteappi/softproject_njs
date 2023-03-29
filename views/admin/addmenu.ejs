@@ -1,0 +1,44 @@
+<%- include('../partials/adminheader') %>
+<link rel="stylesheet" href="/css/addmenu.css"/>
+    <div>
+        <form method="POST">
+            
+            <div>
+                <label for="itemname">Item name</label>
+                <input type="text" name="itemname" placeholder="enter your item name..." required>
+            </div>
+
+            <div>
+                <label for="foodtype">Food type</label>
+                <select name="foodtype">
+                    <option>veg</option>
+                    <option>nonveg</option>
+                </select>
+            </div>
+            
+            <div>
+                <textarea name="shortdesp" placeholder="Enter short description" cols="30" rows="10"></textarea>
+            </div>
+            
+            <div>
+                <textarea name="description" placeholder="Enter full description" cols="50" rows="10"></textarea>
+            </div>
+            
+            <div>
+                <label for="price">Item Price</label>
+                <input type="text" name="price" placeholder="enter your item price..." required>
+            </div>
+            
+            <div>
+                <input type="file" name="itemimage" class="filepond">
+            </div>
+
+            <div>
+                <button type="submit" name="submit">Submit</button>
+            </div>
+            
+
+        </form>
+    </div>
+
+<%- include('../partials/footer') %> 

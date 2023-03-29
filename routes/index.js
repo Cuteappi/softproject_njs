@@ -1,4 +1,5 @@
 const express = require('express')
+
 const customer = require('../models/customer')
 
 const router=express.Router()
@@ -19,7 +20,13 @@ router.post('/',(req,res) =>{
         customer.findOne({username:uname})
             .then(response =>{
                 if(response.password == password) {
-                    res.redirect('/home')
+                    if (response.admin=='yes'){
+                        res.redirect('/admin')
+                        global.name = uname;
+                        
+                    }else{
+                        res.redirect('/home')
+                    }
                 }else{
                     res.render('index',{title:"login-signup", error:"Invalid Password"})
                 }

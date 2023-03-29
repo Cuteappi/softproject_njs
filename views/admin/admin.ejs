@@ -1,0 +1,31 @@
+<%- include('../partials/adminheader') %>
+<link rel="stylesheet" href="/css/menu.css"/>
+
+        <% item.forEach(fitem => { %>
+            <div id="item">
+                <div class="image-holder">
+                    <img src="<%= fitem.one %>" height="270" width="480">
+                </div>
+
+                <div class="item-name">
+                    <span><%= fitem.itemname %></span>
+                    <% if(fitem.foodtype=='veg'){ %>
+                        <img src="/images/veg-symbol.jpg" alt="veg" height="32" width="32"/>
+                    <% }else{ %>
+                        <img src="/images/nonveg.jpg" alt="veg" height="32" width="32"/>
+                    <% } %>
+                </div>
+
+                <div class="desc">
+                    <span class="sdesc">Description:</span><br>
+                    <span class="desc-text"><%= fitem.description %></span>
+                    <button type="button" class="sub"><%= fitem.price %>.00 Rs</button>
+                </div>
+
+            </div>
+
+        <% }); %>
+
+
+<%- include('../partials/footer') %> 
+

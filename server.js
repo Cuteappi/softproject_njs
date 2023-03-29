@@ -2,6 +2,9 @@ if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
 }
 
+//global variables
+global.name=''
+
 //importing modules
 const express = require('express')
 const path=require('path')
@@ -13,6 +16,7 @@ const bodyparser = require('body-parser')
 //router initalization  
 const indexrouter = require('./routes/index')
 const registerloginrouter = require('./routes/registerlogin')
+const adminrouter = require('./routes/admin')
 const homerouter = require('./routes/home')
 
 
@@ -37,6 +41,9 @@ db.once('open',() =>console.log('connection achieved'))
 app.use('/',indexrouter)
 app.use('/registerlogin',registerloginrouter)
 app.use('/home',homerouter)
+app.use('/admin',adminrouter)
+
+
 
 //putting server on port
 app.listen(process.env.PORT || 3000)

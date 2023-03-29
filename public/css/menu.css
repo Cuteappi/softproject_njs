@@ -1,0 +1,159 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+@font-face {
+    font-family: edu;
+    src: url(/fonts/EduNSWACTFoundation-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: edu2;
+    src: url(/fonts/Caveat-VariableFont_wght.ttf);
+}
+
+body{
+    background-image: url(/images/back.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: none;
+}
+
+/*Header Styling*/
+
+header{
+    background-color: rgba(0, 0, 0, 0.534);
+}
+
+#top{
+    color:rgb(255, 255, 255);
+    text-align:center;
+    font-size:66px;
+    font-family: edu;
+    padding: 20px;
+}
+#top1{
+    
+    text-align:center;
+    color:rgb(255, 255, 255);
+    font-size:21px;
+    font-family: edu2;
+    padding-bottom: 10px;
+}
+/* Navigation bar styling*/
+
+
+/*Navbar Functionality*/
+#navbar{
+    display: flex;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0.218),rgba(255, 255, 255, 0.233));
+    font-family: edu;
+    height: auto;
+    justify-content: center;
+    margin-bottom: 40px;
+
+}
+
+ul{
+    list-style-type: none;   
+}
+
+li{
+    padding:10px 40px 10px 40px;
+    
+}
+
+ul li a{
+    color:white;
+    text-decoration: none;
+    font-size: 40px;
+    border-radius:10px;
+}
+ul li:hover{
+    background-color: rgba(255, 255, 255, 0.227);
+    border-radius: 10px;
+    border:transparent;
+}
+
+/*Navbar content functionality*/
+#navcontent{
+    display: flex;
+    margin-left: 20px;
+}
+
+.sub{
+    background-color: #fb2525;
+    padding: 7px 20px 7px 20px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-family: 'Impact', sans-serif;
+    font-size: 26px;
+    text-decoration: none;
+    color: white;
+    margin-left: 80%;
+}
+
+.sub:hover{
+    background: darkred;
+    color: palegoldenrod;
+    cursor: pointer;
+}
+
+/*Designing the footer*/
+footer{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.544);
+    height: 100px;
+    color:white;
+}
+
+#item{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 90px 180fr;
+
+
+    border:solid 1px rgba(255, 255, 255, 0.284);
+    background-color: rgba(0, 0, 0, 0.244);
+    font-family: edu;
+    font-size: 40px;
+    color:white;
+    margin: 0 100px 40px 100px;
+}
+
+.image-holder{
+    grid-row: span 2;
+    height: 270px;
+}
+
+.item-name{
+    background-color: rgba(0, 0, 0, 0.421);
+    margin-left: 10px;
+    padding-top: 10px;
+    font-size: 50px;
+}
+
+.ftype-image{
+    margin-right: 20px;
+}
+
+.desc{
+    position: relative;
+    background:linear-gradient(rgba(0, 0, 0, 0.421),rgba(0, 0, 0, 0));
+}
+
+.sdesc{
+    padding-left: 10px;
+    font-size: 28px;
+}
+
+.desc-text{
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+btn-box{
+    display: flex;
+
+}  
