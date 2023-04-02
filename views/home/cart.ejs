@@ -1,5 +1,7 @@
 <%- include('../partials/header') %>
 <link rel="stylesheet" href="/css/cart.css"/>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <div class="main">
     <% if ( cart !=null && cart!='') { %>
@@ -30,32 +32,85 @@
                          
 
                     </div>
-                    <div style="display:flex; flex-direction: column; align-items: center; justify-content: center; background:linear-gradient(rgba(0, 0, 0, 0.421),rgba(0, 0, 0, 0)); grid-row: span 2;">
+
+                    <div style="display:flex; 
+                        flex-direction: column; 
+                        align-items: center; 
+                        justify-content: center; 
+                        background: linear-gradient(rgba(0, 0, 0, 0.421),rgba(0, 0, 0, 0));
+                        grid-row: span 2;">
 
                         <span align="center" style="font-size: 30px;">Quantity<br><%-fitem[2] %></span><br>
 
                         <a class="sub" href="/home/cart/<%-fitem[0].id %>">Edit</a>
                     </div>
+
                 </div>
  
             <% }); %>
-        </div>       
+        </div>  
+        
+        <div class="sidebar">
+            <div class="total">Total: <%= cart.totalprice %>.00 Rs</div>
+            <div>   
+                <button type="submit" name="submit" class="sub" id="rzp-button1">Pay now</button>
+            </div>
+        </div>
+
     <% }else{ %>
 
-    <div class="main-content" style="padding-top: 90px; text-align: center;">
-        <div>
-            <span style="font-size: 45px; font-family: montserrat;" > Such emptiness :( </span>
+        <div class="main-content" style="padding-top: 90px; text-align: center;">
+            <div>
+                <span style="font-size: 45px; font-family: montserrat;" > Such emptiness :( </span>
+            </div>
+            <div>
+                <a href="/home/homemenu" class="link">Go to Menu</a>
+            </div>
         </div>
-        <div>
-            <a href="/home/homemenu" class="link">Go to Menu</a>
+
+        <div class="sidebar">
+            <div class="total">Total:0.00 Rs</div>
         </div>
-    </div>
+
     <% } %>
 
-    <div class="sidebar">
-        <div class="total">Total: <%= cart.totalprice %>.00 Rs</div>
-        <div><a href="/delivery" class="sub">Pay</a></div>
-    </div>
+
+    
 </div>
+
+
+<script>
+
+    axios.post('/home/cart').then( info =>{
+
+        var options = {
+            "key": "rzp_test_KLPuQguE2HdrjK", // Enter the Key ID generated from the Dashboard
+            "name": "Food Ordering Portal",
+            "description": "Test Transaction",
+            "image": "/images/pp.jpg",
+            "order_id": info.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "callback_url": "/home/delivery",
+            "prefill": {
+                "name": "Pols Aagayi Pols",
+                "email": "abc@example.com",
+                "contact": "9000942069"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+
+        var rzp1 = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = function(e){
+            rzp1.open();
+            e.preventDefault();
+        }
+    })
+    
+
+</script>
 
 <%- include('../partials/footer') %>

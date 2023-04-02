@@ -14,14 +14,12 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyparser = require('body-parser')
 const methodOverride = require('method-override')
-const Razorpay = require('razorpay')
 
 //router initalization  
 const indexrouter = require('./routes/index')
 const registerloginrouter = require('./routes/registerlogin')
 const adminrouter = require('./routes/admin')
 const homerouter = require('./routes/home')
-const deliveryrouter = require('./routes/delivery')
 
 
 app.set('view engine', 'ejs')
@@ -45,10 +43,6 @@ app.use(session({
     }
 }));
 
-var instance = new Razorpay({
-    key_id: 'rzp_test_KLPuQguE2HdrjK',
-    key_secret: '2YzfukuuhfudMhr3e8ER0f7E',
-  });
 
 //database connection
 const mongoose = require('mongoose')
@@ -64,16 +58,6 @@ app.use('/',indexrouter)
 app.use('/registerlogin',registerloginrouter)
 app.use('/home',homerouter)
 app.use('/admin',adminrouter)
-app.use('/delivery',deliveryrouter)
-
-const isauth= (req, res,next) =>{
-
-    if(req.session.authorized){
-        next()
-    }else{
-        res.redirect('/')
-    }
-}
 
 //putting server on port
 app.listen(process.env.PORT || 3000)

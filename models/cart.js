@@ -73,13 +73,9 @@ module.exports = class Cart {
         }
     }
 
-    static deleteAll(productId) {
-        const isExisting = cart.products.findIndex(p => p[0] == product[0]);
-            if (isExisting >= 0) {
-            const deletedProduct = cart.products[isExisting];
-            cart.totalPrice -= deletedProduct.price * deletedProduct.qty;
-            cart.products.splice(isExisting, 1);
-        }
+    static deleteAll() {
+        cart=null
+        
     }
 
 }

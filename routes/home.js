@@ -1,10 +1,11 @@
 const express = require('express')
+const Razorpay = require('razorpay')
 const Menuitem = require('../models/menuitems')
 const Cart = require('../models/cart');
 const path = require('path')
 const router=express.Router()
 
-//register-sign up route
+//displays the home page
 router.get('/',(req,res) =>{
     if (req.session.authorized) {
         res.render('home/home.ejs',{title: 'Home'})
@@ -13,6 +14,7 @@ router.get('/',(req,res) =>{
     }
 })
 
+//display the home menu
 router.get('/homemenu',async (req,res) =>{
     if (req.session.authorized) {
         try{
@@ -32,6 +34,7 @@ router.get('/homemenu',async (req,res) =>{
     }
 })
 
+//get page where we add order
 router.get('/addorder/:id',async (req,res) =>{
     if (req.session.authorized) {
         try{
@@ -52,6 +55,7 @@ router.get('/addorder/:id',async (req,res) =>{
     }  
 })
 
+//add order
 router.post('/addorder/:id',async (req,res) =>{
     if (req.session.authorized) {
 
@@ -72,6 +76,7 @@ router.post('/addorder/:id',async (req,res) =>{
     }  
 })
 
+
 //displays cart
 router.get('/cart', (req,res) =>{
     if (req.session.authorized) {
@@ -87,6 +92,40 @@ router.get('/cart', (req,res) =>{
     }
 })
 
+
+//creating instance
+
+const instance = new Razorpay({
+    key_id: 'rzp_test_KLPuQguE2HdrjK',
+    key_secret: '2YzfukuuhfudMhr3e8ER0f7E',
+});
+
+
+//go to payment page
+router.post('/cart', (req,res) =>{
+    if (req.session.authorized) {
+
+        var y= Cart.getCart()
+
+        var options = {
+            amount: parseInt(y.totalprice)*100,  // amount in the smallest currency unit
+            currency: "INR",
+            receipt: "order_rcptid_11"
+        };
+        
+        instance.orders.create(options, function(err, order) {
+            console.log(order)
+            res.json(order)
+        });
+        
+            
+    } else {
+        res.redirect('/')
+    }
+})
+
+
+//get item info in cart
 router.get('/cart/:id',async (req,res) =>{
     if (req.session.authorized) {
 
@@ -109,6 +148,8 @@ router.get('/cart/:id',async (req,res) =>{
     }
 })
 
+
+// editor remove item from cart  
 router.post('/cart/:id',async (req,res) =>{
     if (req.session.authorized) {
 
@@ -124,6 +165,32 @@ router.post('/cart/:id',async (req,res) =>{
 
         res.redirect('/home/cart')
 
+    } else {
+        res.redirect('/')
+    }
+})
+
+//delivery page
+
+router.get('/delivery',(req, res) => {
+    if (req.session.authorized) {
+
+    res.render('home/delivery.ejs')
+
+    } else {
+        res.redirect('/')
+    }
+})
+
+router.post('/delivery',(req, res) => {
+    if (req.session.authorized) {
+
+        instance.payments.fetch(req.body.razorpay_payment_id).then((paydoc) => {
+            if(paydoc.status == 'captured'){
+                res.redirect('/home/delivery')
+                Cart.deleteAll()
+            }
+        })
     } else {
         res.redirect('/')
     }
