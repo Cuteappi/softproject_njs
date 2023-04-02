@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 <link rel="stylesheet" href="/css/menu.css"/>
-
+    <div class="main">
         <% item.forEach(fitem => { %>
             <div id="item">
                 <div class="image-holder">
@@ -8,23 +8,25 @@
                 </div>
 
                 <div class="item-name">
-                    <% if(fitem.foodtype=='veg'){ %>
-                        <img class="ftype-image" src="/images/veg-symbol.jpg" alt="veg" height="32" width="32"/>
-                    <% }else{ %>
-                        <img class="ftype-image" src="/images/nonveg.jpg" alt="veg" height="32" width="32"/>
-                    <% } %>
                     <span><%= fitem.itemname %></span>
+                    <% if(fitem.foodtype=='veg'){ %>
+                        <img src="/images/veg-symbol.jpg" alt="veg" height="32" width="32"/>
+                    <% }else{ %>
+                        <img src="/images/nonveg.jpg" alt="veg" height="32" width="32"/>
+                    <% } %>
                 </div>
+
+                <div class="price-view"><%=fitem.price %>.00 Rs</div>
 
                 <div class="desc">
                     <span class="sdesc">Description:</span><br>
                     <p class="desc-text"><%= fitem.description %></p>
-                    <div class="btn-box"><button type="button" class="sub"><%= fitem.price %>.00 Rs</button></div>
+                    
                 </div>
-
+                <div class="btn-box"><a href="/home/addorder/<%- fitem.id %>" class="sub">Add Item</a></div>
             </div>
 
         <% }); %>
-
+    </div>       
 
 <%- include('../partials/footer') %> 

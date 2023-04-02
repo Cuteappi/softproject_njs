@@ -50,6 +50,8 @@ header{
     font-family: edu;
     height: auto;
     justify-content: center;
+    position: sticky;
+    top:0;
 
 }
 

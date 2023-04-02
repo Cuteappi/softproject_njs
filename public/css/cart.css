@@ -11,18 +11,65 @@
     font-family: edu2;
     src: url(/fonts/Caveat-VariableFont_wght.ttf);
 }
-
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
 body{
+    position: relative;
     background-image: url(/images/back.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-repeat: none;
+    min-height:100%;
+    padding-bottom:100px;
+    padding-top:230px;
+    box-sizing: inherit;
+}
+
+.main{
+    margin: 20px 0 20px 0;
+    display:grid;
+    min-height:100%;
+    width:100%;
+    gap:35px;
+    grid-template-columns: 5.5fr 1.3fr;
+}
+
+.main-content{
+    border-radius: 10px;
+    margin: 0 0 0 40px;
+    background-color: rgba(255, 255, 255, 0.255);
+    color:white;
+    filter: drop-shadow(10px 10px 5px rgb(0, 0, 0));
+}
+
+.main-content span{
+    width: 100%;
+}
+
+
+/*Designing the footer*/
+footer{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.544);
+    height: 100px;
+    color:white;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
 /*Header Styling*/
 
 header{
+    position: absolute;
     background-color: rgba(0, 0, 0, 0.534);
+    right: 0;
+    left: 0;
+    top: 0;
+
 }
 
 #top{
@@ -50,10 +97,6 @@ header{
     font-family: edu;
     height: auto;
     justify-content: center;
-    margin-bottom: 40px;
-    position: sticky;
-    top:0;
-
 }
 
 ul{
@@ -77,29 +120,6 @@ ul li:hover{
     border:transparent;
 }
 
-.form{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    padding: 20px;
-    font-family: edu;
-    font-size: 40px;
-    width:50%;
-    color:white;
-    background:linear-gradient(rgba(0, 0, 0, 0.585),rgba(0, 0, 0, 0.245));
-    border-radius:10px;
-    text-align: center;
-}
-label{
-    font-family: edu2;
-    font-size: 60px;
-}
-
-.form .inner-1{
-    margin-top: 40px;
-}
-
 /*Navbar content functionality*/
 #navcontent{
     display: flex;
@@ -107,9 +127,8 @@ label{
 }
 
 .sub{
-    margin-top: 40px;
     background-color: #fb2525;
-    padding: 7px 20px 7px 20px;
+    padding: 7px 25px 7px 25px;
     border-radius: 30px;
     border: none;
     outline: none;
@@ -121,26 +140,20 @@ label{
 }
 
 .sub:hover{
-    border-radius: 10px;
+    border-radius: 8px;
     background: darkred;
     color: palegoldenrod;
     cursor: pointer;
 }
 
-/*Designing the footer*/
-footer{
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.544);
-    height: 100px;
-    color:white;
-}
 
 #item{
+    overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 90px 180fr;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 65px 135px 70px;
 
-
+    border-radius: 6px;
     border:solid 1px rgba(255, 255, 255, 0.284);
     background-color: rgba(0, 0, 0, 0.244);
     font-family: edu;
@@ -150,15 +163,21 @@ footer{
 }
 
 .image-holder{
-    grid-row: span 2;
+    grid-row: span 3;
     height: 270px;
 }
 
 .item-name{
     background-color: rgba(0, 0, 0, 0.421);
-    margin-left: 10px;
-    padding-top: 10px;
-    font-size: 50px;
+    padding: 10px 0 0 10px;
+    font-size: 40px;
+}
+
+.price-view{
+    background-color: rgba(0, 0, 0, 0.421);
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 0 10px;
 }
 
 .ftype-image{
@@ -168,6 +187,7 @@ footer{
 .desc{
     position: relative;
     background:linear-gradient(rgba(0, 0, 0, 0.421),rgba(0, 0, 0, 0));
+    grid-row: span 2;
 }
 
 .sdesc{
@@ -180,19 +200,33 @@ footer{
     font-size: 20px;
 }
 
-btn-box{
-    display: flex;
-
+.link{
+    line-height: 10px;
+    font-size: 30px;
+    color: rgb(245, 78, 78);
+    text-decoration: none;
+    display: block;
+    font-family: montserrat;
+    margin-top: 30px;
 }
 
-input[type="text"],select,textarea{
-    border: none;
-    outline: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.293);
-    margin-left:20px;
-    width: 50%;
-    height: 40px;
-    background: transparent;
-    color: white;
-    font-size: 16px;
+.link:hover{
+    color: #ffc107;
+}
+
+.sidebar{
+    border-radius: 10px;
+    margin-right: 20px;
+    height:300px;
+    background-color: rgba(255, 255, 255, 0.255);
+    color:white;
+    position:sticky;
+    top: 20px;
+    filter: drop-shadow(10px 10px 5px rgb(0, 0, 0));
+}
+
+.total{
+    font-size: 25px;
+    margin:10px 0 10px 10px;
+    font-family: montserrat;
 }

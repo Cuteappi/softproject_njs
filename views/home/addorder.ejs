@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="/css/order-item.css"/>
+<script defer type="text/javascript" src="/javascripts/add-minus.js"></script>
+
+<div class="main">
+
+    <div id="item">
+        <div class="image-holder">
+            <img src="<%= item.one %>" height="270" width="480">
+        </div>
+
+        <div class="item-name">
+            <span><%= item.itemname %></span>
+            <% if(item.foodtype=='veg'){ %>
+                <img src="/images/veg-symbol.jpg" alt="veg" height="32" width="32"/>
+            <% }else{ %>
+                <img src="/images/nonveg.jpg" alt="veg" height="32" width="32"/>
+            <% } %>
+        </div>
+
+        <div class="price-view"><%=item.price %>.00 Rs</div>
+
+        <div class="desc">
+            <span class="sdesc">Description:</span><br>
+            <p class="desc-text"><%= item.description %></p>
+            
+        </div>
+        <div class="btn-box">
+            <button type="button" class="minus" onclick="minus()">
+                -
+            </button>
+            <div id="number">
+                <span id="num">1</span>
+            </div>
+            <button type="button" class="plus" onclick="plus()">
+                +
+            </button>
+        </div>
+    </div>
+
+    <form method="POST" >
+        <input type="hidden" name="qty" id="val">
+        <button type="submit" class="sub" id="qty" onclick="eqty()">Order</button>
+    </form>
+
+            
+</div>
+<%- include('../partials/footer') %>

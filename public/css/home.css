@@ -58,6 +58,8 @@ header{
     height: auto;
     justify-content: center;
     margin-bottom: 40px;
+    position: sticky;
+    top:0;
 }
 
 

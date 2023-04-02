@@ -11,12 +11,31 @@
     font-family: edu2;
     src: url(/fonts/Caveat-VariableFont_wght.ttf);
 }
-
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
 body{
+    position: relative;
     background-image: url(/images/back.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-repeat: none;
+    min-height:100%;
+    padding-bottom:100px;
+    box-sizing: inherit;
+}
+
+/*Designing the footer*/
+footer{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.544);
+    height: 100px;
+    color:white;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
 /*Header Styling*/
@@ -51,8 +70,6 @@ header{
     height: auto;
     justify-content: center;
     margin-bottom: 40px;
-    position: sticky;
-    top:0;
 
 }
 
@@ -77,29 +94,6 @@ ul li:hover{
     border:transparent;
 }
 
-.form{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    padding: 20px;
-    font-family: edu;
-    font-size: 40px;
-    width:50%;
-    color:white;
-    background:linear-gradient(rgba(0, 0, 0, 0.585),rgba(0, 0, 0, 0.245));
-    border-radius:10px;
-    text-align: center;
-}
-label{
-    font-family: edu2;
-    font-size: 60px;
-}
-
-.form .inner-1{
-    margin-top: 40px;
-}
-
 /*Navbar content functionality*/
 #navcontent{
     display: flex;
@@ -107,7 +101,6 @@ label{
 }
 
 .sub{
-    margin-top: 40px;
     background-color: #fb2525;
     padding: 7px 20px 7px 20px;
     border-radius: 30px;
@@ -121,23 +114,16 @@ label{
 }
 
 .sub:hover{
-    border-radius: 10px;
+    border-radius: 8px;
     background: darkred;
     color: palegoldenrod;
     cursor: pointer;
 }
 
-/*Designing the footer*/
-footer{
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.544);
-    height: 100px;
-    color:white;
-}
 
 #item{
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 90px 180fr;
 
 
@@ -156,9 +142,15 @@ footer{
 
 .item-name{
     background-color: rgba(0, 0, 0, 0.421);
-    margin-left: 10px;
-    padding-top: 10px;
+    padding: 10px 0 0 10px;
     font-size: 50px;
+}
+
+.price-view{
+    background-color: rgba(0, 0, 0, 0.421);
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 0 10px;
 }
 
 .ftype-image{
@@ -180,19 +172,41 @@ footer{
     font-size: 20px;
 }
 
-btn-box{
+.btn-box{
+    padding: 30px 0 0 0px;
+    background:linear-gradient(rgba(0, 0, 0, 0.421),rgba(0, 0, 0, 0));
     display: flex;
-
+    justify-content: center;
+    align-items: center;
 }
 
-input[type="text"],select,textarea{
+#number{
+    background-color: rgb(255, 255, 255);
+    color:rgb(69, 197, 88);
+    padding: 5px 30px 5px 30px;
+    font-family: montserrat, serif;
+    font-size: 25px;
+}
+
+.plus,.minus{
+    text-align: center;
+    font-size: 27px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px 20px 5px 20px;
+    color:rgb(69, 197, 88);
     border: none;
-    outline: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.293);
-    margin-left:20px;
-    width: 50%;
-    height: 40px;
-    background: transparent;
-    color: white;
-    font-size: 16px;
+}
+
+.plus{
+    border-radius:  0 4px 4px 0;
+    border-left: 1px solid rgb(197, 197, 197);
+}
+
+.minus{
+    border-radius: 4px 0 0 4px;
+    border-right: 1px solid rgb(197, 197, 197);
+}
+
+.plus:hover,.minus:hover{
+    background-color: rgba(255, 255, 255, 0.784);
 }

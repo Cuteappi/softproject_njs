@@ -7,18 +7,21 @@ global.name=''
 
 //importing modules
 const express = require('express')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
 const path=require('path')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyparser = require('body-parser')
 const methodOverride = require('method-override')
-
+const Razorpay = require('razorpay')
 
 //router initalization  
 const indexrouter = require('./routes/index')
 const registerloginrouter = require('./routes/registerlogin')
 const adminrouter = require('./routes/admin')
 const homerouter = require('./routes/home')
+const deliveryrouter = require('./routes/delivery')
 
 
 app.set('view engine', 'ejs')
@@ -28,7 +31,24 @@ app.use(methodOverride('_method'))
 app.use(expressLayouts)
 app.use(express.static(path.join(__dirname,'public')))
 app.use(bodyparser.urlencoded({limit:'10mb',extended:false}))
+app.use(cookieParser())
 
+// creating session
+app.use(session({
+    secret:'bazingabongs',
+    resave:false,
+    saveUninitialized:true,
+    cookie: {
+        maxAge: 10000000,
+        secure:false,
+        sameSite: 'strict'
+    }
+}));
+
+var instance = new Razorpay({
+    key_id: 'rzp_test_KLPuQguE2HdrjK',
+    key_secret: '2YzfukuuhfudMhr3e8ER0f7E',
+  });
 
 //database connection
 const mongoose = require('mongoose')
@@ -44,8 +64,16 @@ app.use('/',indexrouter)
 app.use('/registerlogin',registerloginrouter)
 app.use('/home',homerouter)
 app.use('/admin',adminrouter)
+app.use('/delivery',deliveryrouter)
 
+const isauth= (req, res,next) =>{
 
+    if(req.session.authorized){
+        next()
+    }else{
+        res.redirect('/')
+    }
+}
 
 //putting server on port
 app.listen(process.env.PORT || 3000)
