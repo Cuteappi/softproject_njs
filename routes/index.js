@@ -12,6 +12,7 @@ router.get('/',(req,res) =>{
     }else{
         res.render('index',{title:"login-signup"})
     }
+
     
 })  
 

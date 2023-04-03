@@ -1,5 +1,7 @@
 const express = require('express')
 const Menuitem = require('../models/menuitems')
+const Order = require('../models/order')
+const Delivery = require('../models/delivery')
 const path = require('path')
 const router=express.Router()
 
@@ -43,23 +45,27 @@ router.get('/addmenu',(req,res) =>{
 
 //post addmenu
 router.post('/addmenu',async (req,res) =>{
-    var menuitem = new Menuitem({
-        itemname: req.body.itemname,
-        foodtype: req.body.foodtype,
-        shortdesp: req.body.shortdesp,
-        description: req.body.description,
-        price:req.body.price
-    })
-    saveimg(menuitem ,req.body.itemimage)
+    if (req.session.authorized) {
+        var menuitem = new Menuitem({
+            itemname: req.body.itemname,
+            foodtype: req.body.foodtype,
+            shortdesp: req.body.shortdesp,
+            description: req.body.description,
+            price:req.body.price
+        })
+        saveimg(menuitem ,req.body.itemimage)
 
-    try{
-        const newmenuitem = await menuitem.save()
-        res.render('admin/addmenu.ejs',{title: 'add to menu',name: global.name})
+        try{
+            const newmenuitem = await menuitem.save()
+            res.render('admin/addmenu.ejs',{title: 'add to menu',name: global.name})
 
-    }catch(err){
-        res.redirect('/admin')
-        console.error(err)
-        
+        }catch(err){
+            res.redirect('/admin')
+            console.error(err)
+            
+        }
+    } else {
+        res.redirect('/')
     }
 })
 
@@ -109,16 +115,78 @@ router.put('/admin-menu-del-update/:id', async (req, res) =>{
 
 router.delete('/admin-menu-del-update/:id', async (req, res) =>{
     let menuitem
-        try{
-            menuitem = await Menuitem.findById(req.params.id)
-            await menuitem.deleteOne()
-            res.redirect('/admin')
-        }catch(err){
-            console.log(err)
-            res.redirect('/admin')
-        }
+    try{
+        menuitem = await Menuitem.findById(req.params.id)
+        await menuitem.deleteOne()
+        res.redirect('/admin')
+    }catch(err){
+        console.log(err)
+        res.redirect('/admin')
+    }
 
-    })
+})
+
+//get deliverers
+router.get('/deliverers', async (req, res) =>{
+    if (req.session.authorized) {
+        try{
+            var deliverers = await Delivery.find()
+            res.render('admin/deliverers.ejs',{
+                title: `deliverers page`,
+                item: deliverers,
+                name: global.name
+            })
+
+        }catch(err){
+            res.render('admin/admin.ejs',{title: 'add to menu',name: global.name})
+        }
+    } else {
+        res.redirect('/')
+    }
+})
+
+//add deliverers
+router.post('/deliverers',async (req,res) =>{
+    if (req.session.authorized) {
+        var deliverer = new Delivery({
+
+            deliverer_name: req.body.name,
+            Phone_number: req.body.pnum, 
+        })
+
+        try{
+            const x= await deliverer.save()
+            res.redirect('/admin/deliverers')
+
+        }catch(err){
+            res.redirect('/admin')
+            console.error(err)
+            
+        }
+    } else {
+        res.redirect('/')
+    }
+})
+
+
+//get orders
+router.get('/allorders', async (req, res) =>{
+    if (req.session.authorized) {
+        try{
+            var orders = await Order.findById()
+            res.render('admin/allorders.ejs',{
+                title: `edit ${menuitem.itemname} page`,
+                item: orders,
+                name: global.name
+            })
+
+        }catch(err){
+            res.render('admin/admin.ejs',{title: 'add to menu',name: global.name})
+        }
+    } else {
+        res.redirect('/')
+    }
+})
 
 function saveimg(menuitem,imageEncoded){
     if(imageEncoded==null){return}
