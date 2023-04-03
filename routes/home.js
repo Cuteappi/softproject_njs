@@ -184,10 +184,9 @@ router.get('/delivery', async (req, res) => {
         try {
             // check if food has been delivered
             var order = await Order.findOne({customer_id : req.session.user._id, expiry: 'not expired'})
-
             
             if(order != null && order!=''){
-                
+
                 // server side counter
                 var countdown = order.createdAt.getTime() + 45 * 60000;
                 var now = new Date().getTime();
@@ -231,7 +230,6 @@ router.get('/delivery', async (req, res) => {
                         }
                     }
                     
-
                     await order.save()
                     req.session.haveOrder = false;
 
