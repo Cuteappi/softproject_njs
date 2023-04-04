@@ -1,0 +1,142 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+@font-face {
+    font-family: edu;
+    src: url(/fonts/EduNSWACTFoundation-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: edu2;
+    src: url(/fonts/Caveat-VariableFont_wght.ttf);
+}
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    background-image: url(/images/back.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: none;
+    min-height:100%;
+    padding-bottom:100px;
+    box-sizing: inherit;
+}
+
+/*Designing the footer*/
+footer{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.544);
+    height: 100px;
+    color:white;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+/*Header Styling*/
+
+header{
+    background-color: rgba(0, 0, 0, 0.534);
+}
+
+#top{
+    color:rgb(255, 255, 255);
+    text-align:center;
+    font-size:66px;
+    font-family: edu;
+    padding: 20px;
+}
+#top1{
+    
+    text-align:center;
+    color:rgb(255, 255, 255);
+    font-size:21px;
+    font-family: edu2;
+    padding-bottom: 10px;
+}
+/* Navigation bar styling*/
+
+
+/*Navbar Functionality*/
+#navbar{
+    display: flex;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0.218),rgba(255, 255, 255, 0.233));
+    font-family: edu;
+    height: auto;
+    justify-content: center;
+    margin-bottom: 40px;
+
+}
+
+#navbar ul{
+    list-style-type: none;   
+}
+
+#navbar li{
+    padding:10px 40px 10px 40px;
+    
+}
+
+#navbar ul li a{
+    color:white;
+    text-decoration: none;
+    font-size: 40px;
+    border-radius:10px;
+}
+#navbar ul li:hover{
+    background-color: rgba(255, 255, 255, 0.227);
+    border-radius: 10px;
+    border:transparent;
+}
+
+/*Navbar content functionality*/
+#navcontent{
+    display: flex;
+    margin-left: 20px;
+}
+
+.main{
+    background: linear-gradient(rgba(0, 0, 0, 0.766),rgba(0, 0, 0, 0.064));
+    color:white;
+    border: 1px solid rgba(255, 255, 255, 0.232);
+    margin:auto;
+    width:90%;
+    font-family: edu2;
+    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.list{
+    display:flex;
+    justify-content: space-around;
+}
+
+.menu-items ul{
+    list-style-type: none;   
+}
+.value{
+    display:flex;
+    justify-content: space-around;
+}
+
+th{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+td{
+    font-size: 30px;
+}
+
+th,td{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.232);
+}
+
+td:nth-of-type(n){
+    border-bottom: transparent;
+}

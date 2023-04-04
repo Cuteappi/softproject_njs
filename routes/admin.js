@@ -1,5 +1,6 @@
 const express = require('express')
 const Menuitem = require('../models/menuitems')
+const customer = require('../models/customer')
 const Order = require('../models/order')
 const Delivery = require('../models/delivery')
 const path = require('path')
@@ -173,10 +174,18 @@ router.post('/deliverers',async (req,res) =>{
 router.get('/allorders', async (req, res) =>{
     if (req.session.authorized) {
         try{
-            var orders = await Order.findById()
+
+            var orders = await Order.find()
+            var cust = await customer.find()
+            var menu = await Menuitem.find()
+            var deliverer = await Delivery.find()
+
             res.render('admin/allorders.ejs',{
-                title: `edit ${menuitem.itemname} page`,
+                title: `Order`,
                 item: orders,
+                customers: cust,
+                menuitems: menu,
+                del : deliverer,
                 name: global.name
             })
 
