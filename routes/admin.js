@@ -12,7 +12,6 @@ const imageMimeTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
 //get into admin
 router.get('/',async (req,res) =>{
     if (req.session.authorized) {
-        console.log(req.session)
         try{
             let query = await Menuitem.find()
             res.render('admin/admin.ejs',{

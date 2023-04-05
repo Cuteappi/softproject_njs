@@ -8,9 +8,18 @@ const path = require('path')
 const router=express.Router()
 
 //displays the home page
-router.get('/',(req,res) =>{
+router.get('/', async(req,res) =>{
     if (req.session.authorized) {
-        res.render('home/home.ejs',{title: 'Home'})
+
+        try{
+            let query = await Menuitem.find().limit(5)
+            res.render('home/home.ejs',{title: 'Home',
+            item:query})
+        }catch(err){
+            res.redirect('/home')
+            console.log(err);
+        }
+        
     } else {
         res.redirect('/')
     }
@@ -167,6 +176,10 @@ router.post('/cart/:id',async (req,res) =>{
 
         }else if (inputValue == "Remove"){
             Cart.deleteItem(req.params.id)
+            var x= Cart.getCart()
+            if(x.products.length == 0) {
+                Cart.deleteAll()
+            }
         }
 
         res.redirect('/home/cart')

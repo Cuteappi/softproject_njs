@@ -71,6 +71,7 @@ module.exports = class Cart {
                 cart.products.splice(i,1)
             }
         }
+        cart.totalprice = Cart.getTotalPrice()
     }
 
     static deleteAll() {
