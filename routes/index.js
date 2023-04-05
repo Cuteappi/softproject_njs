@@ -6,7 +6,7 @@ router.get('/',(req,res) =>{
     if (req.session.authorized==true && req.session.user.admin=='yes') {
         res.redirect('/admin');
 
-    }else if (req.session.authorized==true && req.session.admin=='no'){
+    }else if (req.session.authorized==true && req.session.user.admin=='no'){
         res.redirect('/home')
 
     }else{

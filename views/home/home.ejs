@@ -1,11 +1,13 @@
 <%- include('../partials/header') %>
 <link rel="stylesheet" href="/css/home.css"/>
-
-
+<script src="https://kit.fontawesome.com/2718e057a9.js" crossorigin="anonymous"></script>
 
     <div class="carasoule">
 
         <div id="hider"></div>
+
+        <button type="button" id="nextbtn"><i class="fa-solid fa-arrow-right"></i></button>
+        <button type="button" id="prevbtn"><i class="fa-solid fa-arrow-left"></i></button>
 
         <% item.forEach(fitem => { %>
             
@@ -48,10 +50,6 @@
         <% }) %>
     </div>
 
-
-    <button type="button" id="nextbtn">next</button>
-    <button type="button" id="prevbtn">prev</button>
-
     <script>
 
         let counter = 0;
@@ -81,7 +79,7 @@
 
         nextbtn.addEventListener("click",()=>{
 
-            hider.style.width = (viewPortWidth-1) +"px";
+            hider.style.width = (viewPortWidth) +"px";
             hider.style.backgroundColor = "black";
 
             setTimeout(()=>{
@@ -107,7 +105,8 @@
         });
 
         prevbtn.addEventListener("click",()=>{
-            hider.style.width = (viewPortWidth-1) +"px";
+            hider.style.width = (viewPortWidth) +"px";
+            hider.style.backgroundColor = "black";
 
             setTimeout(()=>{
                 if(counter == 0){
@@ -123,11 +122,14 @@
 
                 }
                 hider.style.width = "0px";
-            },1000)
+                hider.style.backgroundColor = "white";
+            },850)
 
 
 
             });
     </script>
+
+<%- include('../partials/footer') %> 
 
 

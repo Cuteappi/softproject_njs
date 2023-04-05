@@ -23,8 +23,8 @@ body{
   background-size: cover;
   background-attachment: fixed;
   background-repeat: none;
-  height:100%;
-  padding-bottom:100px;
+  min-height:100%;
+  padding-bottom:50px;
   box-sizing: inherit;
 }
 
@@ -32,7 +32,7 @@ body{
 footer{
   text-align: center;
   background-color: rgba(0, 0, 0, 0.544);
-  height: 100px;
+  height: 70px;
   color:white;
   position: absolute;
   right: 0;
@@ -45,11 +45,11 @@ header {
   background-color: rgba(0, 0, 0, 0.534);
 }
 
-#top {
-  color: rgb(255, 255, 255);
-  text-align: center;
-  font-size: 66px;
-  font-family: "montserrat", monospace;
+#top{
+  color:rgb(255, 255, 255);
+  text-align:center;
+  font-size:66px;
+  font-family: edu;
   padding: 20px;
 }
 
@@ -69,7 +69,7 @@ header {
   font-family: edu;
   height: auto;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   position: sticky;
   top: 0;
 }
@@ -248,4 +248,38 @@ span {
   z-index: 10;
   top: 0;
   transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+#prevbtn{
+  position: absolute;
+  top:45%;
+  left: 0;
+  padding:30px 15px 30px 15px;
+  border-radius: 0 8px 8px 0;
+  color:rgba(255, 255, 255, 0.588);
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.459);
+  font-size: 40px;
+  translate: 0 -23.175%;
+  transition: all 0.5s ease-in-out;
+  
+}
+
+#nextbtn{
+  position: absolute;
+  top:45%;
+  right: 0;
+  padding:30px 15px 30px 15px;
+  border-radius: 8px 0 0 8px;
+  color:rgba(255, 255, 255, 0.588);
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.459);
+  font-size: 40px;
+  translate: 0 -23.175%; 
+  transition: all 0.5s ease-in-out;
+}
+
+#prevbtn:hover , #nextbtn:hover{
+  background-color: rgba(0, 0, 0, 0.736);
+  
 }

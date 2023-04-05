@@ -12,18 +12,24 @@ const imageMimeTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
 //get into admin
 router.get('/',async (req,res) =>{
     if (req.session.authorized) {
-        try{
-            let query = await Menuitem.find()
-            res.render('admin/admin.ejs',{
-                title: 'admin page',
-                item: query,
-                name: global.name
-            })
-    
-        }catch(err){
-            res.redirect('/admin')
-            console.log(err);
+        if (req.session.user.admin=='yes'){
+
+            try{
+                let query = await Menuitem.find()
+                res.render('admin/admin.ejs',{
+                    title: 'admin page',
+                    item: query,
+                    name: global.name
+                })
+        
+            }catch(err){
+                res.redirect('/admin')
+                console.log(err);
+            }
+        }else{
+            res.redirect('/home')
         }
+        
     } else {
         console.log(req.session)
         res.redirect('/')
@@ -34,8 +40,12 @@ router.get('/',async (req,res) =>{
 //get in addmenu
 router.get('/addmenu',(req,res) =>{
     if (req.session.authorized) {
-        res.render('admin/addmenu.ejs',{title: 'add to menu',name: global.name})
-    
+        if (req.session.user.admin=='yes'){
+
+            res.render('admin/addmenu.ejs',{title: 'add to menu',name: global.name})
+        }else{
+            res.redirect('/home')
+        }
     } else {
         res.redirect('/')    
     }
