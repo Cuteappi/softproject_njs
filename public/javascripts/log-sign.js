@@ -117,8 +117,9 @@
         if(password.value!==repass.value){
             document.getElementById('five').innerHTML = 'Passwords dont match';
             return false;
-        }
-        else{
+        }else if(password.value=='' && repass.value==''){
+            document.getElementById('five').innerHTML = 'Passwords cannot be null'
+        }else{
             document.getElementById('five').innerHTML = '';
             return true;
         }
