@@ -28,7 +28,7 @@ app.set('layout', 'layouts/layout')
 app.use(methodOverride('_method'))
 app.use(expressLayouts)
 app.use(express.static(path.join(__dirname,'public')))
-app.use(bodyparser.urlencoded({limit:'10mb',extended:false}))
+app.use(bodyparser.urlencoded({limit:'100mb',extended:false}))
 app.use(cookieParser())
 
 // creating session
