@@ -28,5 +28,4 @@ const deliverySchema = new Schema({
 })
 
 const delivery = mongoose.model('delivery', deliverySchema);
-
 module.exports = delivery;
