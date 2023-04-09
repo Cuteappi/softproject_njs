@@ -1,5 +1,6 @@
 const express = require('express')
 const customer = require('../models/customer')
+const bcrypt = require('bcrypt')
 const router=express.Router()
 
 router.get('/',(req,res) =>{
@@ -27,23 +28,30 @@ router.post('/', async (req,res,) =>{
             var username = req.body.Username
             var password = req.body.Pass
         
-            try{
-                let user = await customer.findOne({username,password})
-                req.session.user = user;
-                req.session.authorized = true;
-                global.name=username
+            try{             
+                let user = await customer.findOne({username})
+
                 if (user) {
-                    if (user.admin=='yes'){
-                        res.redirect('/admin');
+                    const auth = await bcrypt.compare(password,user.password)
+                    if (auth){
+
+                        req.session.user = user;
+                        req.session.authorized = true;
+                        global.name=username
+                        if (user.admin=='yes'){
+                            res.redirect('/admin');
+                        }else{
+                            res.redirect('/home')
+                        }
                     }else{
-                        res.redirect('/home')
+                        res.render('index',{title:"login-signup", error:"Invalid password"})
                     }
                 }
                 else {
-                    res.render('index',{title:"login-signup", error:"Invalid Username/pwd"})
+                    res.render('index',{title:"login-signup", error:"Invalid Username"})
                 }
             }catch(err){
-                res.render('index',{title:"login-signup", error:"Invalid Username/pwd"})
+                res.render('index',{title:"login-signup", error:"Invalid Username"})
                 console.log(err);
             }
         }       
@@ -58,6 +66,9 @@ router.post('/', async (req,res,) =>{
         });
         try{
             await values.save()
+            req.session.user = values;
+            req.session.authorized = true;
+            global.name=values.username;
             res.redirect('/registerlogin')
         }catch(err){
             res.render('index',{title:"login-signup", error:"Something went wrong"})
