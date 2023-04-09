@@ -1,62 +1,135 @@
 <%- include('../partials/header') %>
 <link rel="stylesheet" href="/css/home.css"/>
-    <div id="container1">
-        <div id="row1">
-            Welcome to Online FoodShop
-        </div>
+<script src="https://kit.fontawesome.com/2718e057a9.js" crossorigin="anonymous"></script>
 
-        <button class="btn">ORDER NOW</button>
+    <div class="carasoule">
 
-        <div id="container3">
-            <div id="row2">
-                <div id="b">
-                    <span>
-                        Description
-                    </span>
-                    <button class="btn">Prices</button>
+        <div id="hider"></div>
+
+        <button type="button" id="nextbtn"><i class="fa-solid fa-arrow-right"></i></button>
+        <button type="button" id="prevbtn"><i class="fa-solid fa-arrow-left"></i></button>
+
+        <% item.forEach(fitem => { %>
+            
+            <div class="carasoule-slider">
+                
+                
+                <img src="<%= fitem.one %>" alt="Snow" id="food-img">
+    
+                <div class="top">
+
+                    <div style="display:flex; justify-content: center; align-items: center; padding: 10px 0 10px 0;">
+                        <span><%= fitem.itemname %></span>
+                        <% if(fitem.foodtype=='veg'){ %>
+                            <img src="/images/veg-symbol.jpg" alt="veg" height="32" width="32"/>
+                        <% }else{ %>
+                            <img src="/images/nonveg.jpg" alt="veg" height="32" width="32"/>
+                        <% } %>
+
+                    </div>
+
+                    <div class="price">
+                        <%=fitem.price %>.00 Rs
+                    </div>
+
                 </div>
-            </div>
-            <div id="row3">
-                <div id="b">
-                    <span>
-                        Description
-                    </span>
-                    <button class="btn">Specials</button>
+                <div class="bottom">
+
+                    <div class="desc">
+                        <div class="sdesc">
+                            Description:  
+                        </div>
+                        <div class="two" style="overflow: hidden; text-align: left; margin-left: 15px"><%= fitem.description %></div>
+                        <div class="three" style="padding-top: 5px;"><a href="/home/addorder/<%- fitem.id %>" class="sub" >Add Item</a></div>
+                    </div>
+
                 </div>
-            </div>
-        </div>
-
-    </div>
-
-    <h1 id="top3">Featured Products</h1>
-
-    <div id="container4">
-        <div id="row4" class="d1">
-            <div id="b">
-                <span>
-                    Description
-                </span>
-                <button class="btn">ORDER NOW</button>
+                
             </div>
             
-        </div>
-        <div id="row4" class="d2">
-            <div id="b">
-                <span>
-                    Description
-                </span>
-                <button class="btn">ORDER NOW</button>
-            </div>
-        </div>
-        <div id="row4" class="d3">
-            <div id="b">
-                <span>
-                    Description
-                </span>
-                <button class="btn">ORDER NOW</button>
-            </div>
-        </div>
+        <% }) %>
     </div>
 
+    <script>
+
+        let counter = 0;
+
+        var viewPortWidth;
+
+        setInterval(()=>{
+            viewPortWidth = window.innerWidth;
+        },500)
+
+
+        var carasoule = document.querySelector(".carasoule");
+        var carasouledivs = document.querySelectorAll(".carasoule .carasoule-slider");
+        var hider = document.querySelector("#hider");
+
+        hider.style.width = "0px";
+
+        var prevbtn = document.querySelector("#prevbtn");
+        var nextbtn = document.querySelector("#nextbtn");
+
+        console.log(carasouledivs.length)
+
+        for (let i = 1; i < carasouledivs.length; i++) {
+
+            carasouledivs[i].style.display = "none";
+        }
+
+        nextbtn.addEventListener("click",()=>{
+
+            hider.style.width = (viewPortWidth) +"px";
+            hider.style.backgroundColor = "black";
+
+            setTimeout(()=>{
+                if(counter == carasouledivs.length - 1){
+                    carasouledivs[counter].style.display = "none";
+                    counter = 0;
+                    carasouledivs[counter].style.display = "block";
+
+
+                }else{
+                    carasouledivs[counter].style.display = "none";
+                    carasouledivs[counter+1].style.display = "block";
+
+                    counter++ ;
+
+                }
+                hider.style.width = "0px";
+                hider.style.backgroundColor = "white";
+            },1000)
+
+            
+
+        });
+
+        prevbtn.addEventListener("click",()=>{
+            hider.style.width = (viewPortWidth) +"px";
+            hider.style.backgroundColor = "black";
+
+            setTimeout(()=>{
+                if(counter == 0){
+                    carasouledivs[counter].style.display = "none";
+                    counter = carasouledivs.length - 1;
+                    carasouledivs[counter].style.display = "block";
+
+                }else{
+                    carasouledivs[counter].style.display = "none";
+                    carasouledivs[counter-1].style.display = "block";
+
+                    counter-- ;
+
+                }
+                hider.style.width = "0px";
+                hider.style.backgroundColor = "white";
+            },800)
+
+
+
+            });
+    </script>
+
 <%- include('../partials/footer') %> 
+
 

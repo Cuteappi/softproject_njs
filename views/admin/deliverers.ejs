@@ -1,0 +1,60 @@
+<%- include('../partials/adminheader') %>
+<link rel="stylesheet" href="/css/addeliverers.css"/>
+
+    <div class="form">
+        <form method="POST">
+            
+            <div class="inner-1">
+                <label for="name">Deliverer name</label>
+                <input type="text" name="name" placeholder="enter your your name..." required>
+            </div>
+
+            <div class="inner-1">
+                <label for="name">Phone number  </label>
+                <input type="text" name="pnum" placeholder="enter your your number..." required>
+            </div>
+
+            <div>
+                <button type="submit" name="submit" class="sub">Submit</button>
+            </div>
+        
+        </form>
+    </div>
+
+    <table class="main">
+
+        <tr>
+            <th>
+                <div class="name">
+                    Name:
+                </div>
+            </th>
+
+            <th>
+                <div class="phone-number">
+                    Phone number:
+                </div>
+            </th>
+        </tr>
+
+        <% item.forEach(fitem => { %>
+
+            <tr>
+                <td>
+                    <div class="name">
+                        <%-fitem.deliverer_name %>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="phone-number">
+                        <%-fitem.Phone_number %>
+                    </div>
+                </td>
+
+            </tr> 
+
+        <% }) %>
+    </table>
+
+<%- include('../partials/footer') %> 

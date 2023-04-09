@@ -1,1 +1,79 @@
-hi delivery page
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="/css/delivery.css"/>
+
+    <% if(timer != null){ %>
+        <div class="main">
+            <div class="timer">
+                <p id="demo"></p>
+            </div>
+            <div id="order-status">
+                You're order is being prepared
+            </div>
+
+            <div class="deliverer" style="margin: 100px;">
+                Delivery person
+                <div>
+                    Name: <%= Deliverer.deliverer_name %>
+                </div>
+
+                <div>
+                    Contact Number: <%= Deliverer.Phone_number %>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+            console.log('<%-timer %>')
+            function addMinutes(minutes) {
+                return new Date(parseInt('<%-timer %>') + minutes*60000);
+            }
+
+            // Update the count down every 1 second
+            setInterval(()=>{
+                // Set the date we're counting down to
+                var countDownDate = addMinutes(45)
+        
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                document.getElementById("demo").innerHTML = minutes + "m : " + seconds + "s";
+
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    document.getElementById("demo").innerHTML = "You're order is here";
+                    document.getElementById("order-status").innerHTML = "";
+
+                    //Redirect to after over delivery
+                    setTimeout(()=>{
+                        location.href = '/home/delivery';
+                    },3000)
+
+                    clearInterval(x);
+                }
+            },1000);
+    
+        </script>
+
+    <% }else{ %>
+        <div class="main">
+            <div id="order-status">
+                You're havent ordered anything
+                <br>
+                <a class="link" href="/home/homemenu">Go to menu</a>
+            </div>
+        </div>
+    <% } %>
+    
+
+<%- include('../partials/footer') %> 

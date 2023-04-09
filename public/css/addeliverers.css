@@ -11,6 +11,7 @@
     font-family: edu2;
     src: url(/fonts/Caveat-VariableFont_wght.ttf);
 }
+
 html{
     height: 100%;
     box-sizing: border-box;
@@ -23,31 +24,8 @@ body{
     background-repeat: none;
     min-height:100%;
     padding-bottom:100px;
-    padding-top:230px;
     box-sizing: inherit;
 }
-
-.main{
-    margin: 20px 0 20px 0;
-    display:grid;
-    min-height:100%;
-    width:100%;
-    gap:35px;
-    grid-template-columns: 5.5fr 1.3fr;
-}
-
-.main-content{
-    border-radius: 10px;
-    margin: 0 0 0 40px;
-    background-color: rgba(255, 255, 255, 0.255);
-    color:white;
-    filter: drop-shadow(10px 10px 5px rgb(0, 0, 0));
-}
-
-.main-content span{
-    width: 100%;
-}
-
 
 /*Designing the footer*/
 footer{
@@ -60,16 +38,10 @@ footer{
     left: 0;
     bottom: 0;
 }
-
 /*Header Styling*/
 
 header{
-    position: absolute;
     background-color: rgba(0, 0, 0, 0.534);
-    right: 0;
-    left: 0;
-    top: 0;
-
 }
 
 #top{
@@ -97,6 +69,9 @@ header{
     font-family: edu;
     height: auto;
     justify-content: center;
+    position: sticky;
+    top:0;
+
 }
 
 ul{
@@ -120,15 +95,41 @@ ul li:hover{
     border:transparent;
 }
 
-/*Navbar content functionality*/
-#navcontent{
-    display: flex;
-    margin-left: 20px;
+div{
+    margin-top: 40px;
+    font-family: edu;
+    font-size: 40px;
+    color:white;
+    text-align: center;
+}
+
+.form{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px;
+    font-family: edu;
+    font-size: 40px;
+    width:50%;
+    color:white;
+    background:linear-gradient(rgba(0, 0, 0, 0.585),rgba(0, 0, 0, 0.245));
+    border-radius:10px;
+    text-align: center;
+}
+label{
+    font-family: edu2;
+    font-size: 60px;
+}
+
+.form .inner-1{
+    margin-top: 40px;
 }
 
 .sub{
+    margin-top: 40px;
     background-color: #fb2525;
-    padding: 7px 35px 7px 35px;
+    padding: 7px 20px 7px 20px;
     border-radius: 30px;
     border: none;
     outline: none;
@@ -140,93 +141,53 @@ ul li:hover{
 }
 
 .sub:hover{
-    border-radius: 8px;
+    border-radius: 10px;
     background: darkred;
     color: palegoldenrod;
     cursor: pointer;
 }
 
-
-#item{
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 65px 135px 70px;
-
-    border-radius: 6px;
-    border:solid 1px rgba(255, 255, 255, 0.284);
-    background-color: rgba(0, 0, 0, 0.244);
-    font-family: edu;
-    font-size: 40px;
-    color:white;
-    margin: 0 100px 40px 100px;
-}
-
-.image-holder{
-    grid-row: span 3;
-    height: 270px;
-}
-
-.item-name{
-    background-color: rgba(0, 0, 0, 0.421);
-    padding: 10px 0 0 10px;
-    font-size: 40px;
-}
-
-.price-view{
-    background-color: rgba(0, 0, 0, 0.421);
+/*Navbar content functionality*/
+#navcontent{
     display: flex;
-    justify-content: center;
-    padding: 10px 0 0 10px;
-}
-
-.ftype-image{
-    margin-right: 20px;
-}
-
-.desc{
-    position: relative;
-    background:linear-gradient(rgba(0, 0, 0, 0.421),rgba(0, 0, 0, 0));
-    grid-row: span 2;
-}
-
-.sdesc{
-    padding-left: 10px;
-    font-size: 28px;
-}
-
-.desc-text{
     margin-left: 20px;
-    font-size: 20px;
 }
 
-.link{
-    line-height: 10px;
-    font-size: 30px;
-    color: rgb(245, 78, 78);
-    text-decoration: none;
-    display: block;
-    font-family: montserrat;
-    margin-top: 30px;
+input[type="text"],select,textarea{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.293);
+    margin-left:20px;
+    width: 50%;
+    height: 40px;
+    background: transparent;
+    color: white;
+    font-size: 16px;
 }
 
-.link:hover{
-    color: #ffc107;
-}
-
-.sidebar{
+.main{
+    text-align: center;
+    background:linear-gradient(rgba(0, 0, 0, 0.585),rgba(0, 0, 0, 0.093));
+    width:50%;
     border-radius: 10px;
-    margin-right: 20px;
-    height:300px;
-    background-color: rgba(255, 255, 255, 0.255);
-    color:white;
-    position:sticky;
-    top: 20px;
-    filter: drop-shadow(10px 10px 5px rgb(0, 0, 0));
+    margin: auto ;
+    margin-bottom: 30px;   
+    border-collapse: collapse;
+    overflow: hidden;
 }
 
-.total{
-    font-size: 25px;
-    margin:10px 0 10px 10px;
+td,th{
+    padding: 10px;
+}
+th .phone-number,th .name {
+    font-family: edu2;
+    font-size: 50px;
+    color:rgb(245, 78, 78);
+}
+
+.phone-number,.name{
+    font-size: 30px;
+    margin:0;
+    color:#ffffff;
     font-family: montserrat;
 }

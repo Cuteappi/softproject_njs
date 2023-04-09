@@ -27,28 +27,6 @@ body{
     box-sizing: inherit;
 }
 
-.main{
-    margin: 20px 0 20px 0;
-    display:grid;
-    min-height:100%;
-    width:100%;
-    gap:35px;
-    grid-template-columns: 5.5fr 1.3fr;
-}
-
-.main-content{
-    border-radius: 10px;
-    margin: 0 0 0 40px;
-    background-color: rgba(255, 255, 255, 0.255);
-    color:white;
-    filter: drop-shadow(10px 10px 5px rgb(0, 0, 0));
-}
-
-.main-content span{
-    width: 100%;
-}
-
-
 /*Designing the footer*/
 footer{
     text-align: center;
@@ -126,80 +104,6 @@ ul li:hover{
     margin-left: 20px;
 }
 
-.sub{
-    background-color: #fb2525;
-    padding: 7px 35px 7px 35px;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    font-family: 'Impact', sans-serif;
-    font-size: 26px;
-    text-decoration: none;
-    color: white;
-    transition: 0.5s ease-in-out;
-}
-
-.sub:hover{
-    border-radius: 8px;
-    background: darkred;
-    color: palegoldenrod;
-    cursor: pointer;
-}
-
-
-#item{
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 65px 135px 70px;
-
-    border-radius: 6px;
-    border:solid 1px rgba(255, 255, 255, 0.284);
-    background-color: rgba(0, 0, 0, 0.244);
-    font-family: edu;
-    font-size: 40px;
-    color:white;
-    margin: 0 100px 40px 100px;
-}
-
-.image-holder{
-    grid-row: span 3;
-    height: 270px;
-}
-
-.item-name{
-    background-color: rgba(0, 0, 0, 0.421);
-    padding: 10px 0 0 10px;
-    font-size: 40px;
-}
-
-.price-view{
-    background-color: rgba(0, 0, 0, 0.421);
-    display: flex;
-    justify-content: center;
-    padding: 10px 0 0 10px;
-}
-
-.ftype-image{
-    margin-right: 20px;
-}
-
-.desc{
-    position: relative;
-    background:linear-gradient(rgba(0, 0, 0, 0.421),rgba(0, 0, 0, 0));
-    grid-row: span 2;
-}
-
-.sdesc{
-    padding-left: 10px;
-    font-size: 28px;
-}
-
-.desc-text{
-    margin-left: 20px;
-    font-size: 20px;
-}
-
 .link{
     line-height: 10px;
     font-size: 30px;
@@ -214,19 +118,24 @@ ul li:hover{
     color: #ffc107;
 }
 
-.sidebar{
-    border-radius: 10px;
-    margin-right: 20px;
-    height:300px;
-    background-color: rgba(255, 255, 255, 0.255);
+.main{
     color:white;
-    position:sticky;
-    top: 20px;
-    filter: drop-shadow(10px 10px 5px rgb(0, 0, 0));
+    font-size: 40px;
+    text-align: center;
 }
 
-.total{
-    font-size: 25px;
-    margin:10px 0 10px 10px;
+.timer{
+    margin: 20px 0 0 0;
+    font-size: 60px;
+    font-family: edu2;
+}
+
+#order-status{
+    margin: 20px 0 0 0;
     font-family: montserrat;
+}
+
+.deliverer{
+    font-family: montserrat;
+    font-size: 25px;
 }

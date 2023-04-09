@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.9",
@@ -21,7 +22,8 @@
     "jsdom": "^21.1.1",
     "method-override": "^3.0.0",
     "mongoose": "^7.0.3",
-    "razorpay": "^2.8.6"
+    "razorpay": "^2.8.6",
+    "swup": "^3.0.5"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",

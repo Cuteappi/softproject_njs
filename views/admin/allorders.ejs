@@ -1,0 +1,97 @@
+<%- include('../partials/adminheader') %>
+<link rel="stylesheet" href="/css/allorders.css"/>
+
+    <table class="main">
+        <tr>
+            <th>
+                Order_ids:
+            </th>
+
+            <th>
+                Customer
+            </th>
+
+            <th>
+                Deliverer
+            </th>
+
+            <th>
+                Stauts:
+            </th>
+
+            <th>
+                Order Date:
+            </th>
+
+        </tr>
+
+        <% item.forEach(fitem => { %>
+
+            <tr>
+                
+                <td>
+
+                    <ul class="menu-items">
+                        <% fitem.order.forEach(order => { %>
+                            <% menuitems.forEach(menu => { %>
+                                <% if(menu._id == order[0]){ %>
+                                    <li class="list"> 
+                                        <div class="">
+                                            <%- menu.itemname %>
+                                        </div>
+                                        <div>
+                                            Qty: <%- order[1] %>
+                                        </div>
+                                    </li>
+                                <% } %>
+                            <% }) %>
+                        <% }) %>
+                    </ul>
+                    
+                </td>
+
+                <td>
+                    <% customers.forEach(cust => { %>
+                        <% if(fitem.customer_id == cust._id){ %>
+                            <div class="value">
+                                <%- cust.username %>
+                            </div>
+                        <% } %>
+                    <% }) %>
+                </td>
+
+                <td>
+                    <% del.forEach(d => { %>
+                        <% if(fitem.dPerson_id == d._id){ %>
+                            <div align="center">
+                                <div>
+                                    <%- d.deliverer_name %>
+                                </div>
+                                <div>
+                                    contact: <%- d.Phone_number %>
+                                </div>
+                            </div>
+                            
+                        <% } %>
+                    <% }) %>
+                </td>
+
+                <td>
+                    <div class="value" align="center">
+                        <%-fitem.expiry %>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="value" align="center">
+                        <%-fitem.createdAt %>
+                    </div>
+                </td>
+
+            </tr>
+
+        <% }) %>
+
+    </table>
+
+<%- include('../partials/footer') %> 
